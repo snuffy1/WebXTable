@@ -2,8 +2,8 @@
 
 const AUTH_TOKEN_KEY = "leaders_club_auth_token"
 const ADMIN_CREDENTIALS = {
-  username: "admin",
-  password: "admin123",
+  username: process.env.NEXT_PUBLIC_ADMIN_USERNAME,
+  password: process.env.NEXT_PUBLIC_ADMIN_PASSWORD,
 }
 
 export function login(username: string, password: string): Promise<boolean> {

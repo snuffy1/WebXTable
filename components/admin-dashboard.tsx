@@ -67,12 +67,14 @@ export function AdminDashboard() {
   };
 
   const handleDelete = (id: string) => {
-    const updatedData = data.filter((entry) => entry.id !== id);
-    setData(updatedData);
-    saveLeaderboardData(updatedData);
-    window.dispatchEvent(new CustomEvent("leaderboard-updated"));
+    // Add confirmation dialog before proceeding
+    if (window.confirm("Are you sure you want to delete this member?")) {
+      const updatedData = data.filter((entry) => entry.id !== id);
+      setData(updatedData);
+      saveLeaderboardData(updatedData);
+      window.dispatchEvent(new CustomEvent("leaderboard-updated"));
+    }
   };
-
   const handleAdd = () => {
     if (!editForm.name) return;
 
